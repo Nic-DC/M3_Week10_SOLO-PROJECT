@@ -2,6 +2,7 @@ import { Container, Jumbotron, Badge, Toast } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { WiDegrees } from "react-icons/wi";
 
 const CityWheater = ({ endpoint }) => {
   const [city, setCity] = useState(null);
@@ -45,21 +46,27 @@ const CityWheater = ({ endpoint }) => {
     <div>
       {city && (
         <Jumbotron fluid id="jumbotron">
-          <Container>
-            <h1>
-              Welcome to <strong>{city.name}</strong>
-            </h1>
-            <Toast>
-              <Toast.Header>
-                <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
-                <strong className="mr-auto">Bootstrap</strong>
-                <small>just now</small>
-              </Toast.Header>
-              <Toast.Body>See? Just like this.</Toast.Body>
-            </Toast>
-            <Badge variant="warning">{city.id}</Badge>
-            <p>This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-          </Container>
+          <h1>
+            Welcome to <strong>{city.name}</strong>
+          </h1>
+          <Toast id="toast">
+            <Toast.Header>
+              <Badge variant="dark" className="mr-auto">
+                LON:{city.coord.lon} LAT:{city.coord.lat}
+              </Badge>
+              <small>Wind speed: {city.wind.speed} km/h</small>
+            </Toast.Header>
+            <Toast.Body>
+              Temperature: {city.main.temp}
+              <WiDegrees id="degrees" />F <Badge variant="info">{city.weather[0].description}</Badge>
+            </Toast.Body>
+            <Toast.Header>
+              <Badge variant="warning" className="mr-auto">
+                ID: #{city.id}
+              </Badge>
+              <small>Cod: {city.cod}</small>
+            </Toast.Header>
+          </Toast>
         </Jumbotron>
       )}
     </div>

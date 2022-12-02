@@ -67,3 +67,15 @@
 #cityLink {
   color: white;
 }
+
+#jumbotron {
+  background-color: #282c34;
+}
+
+#toast {
+  color: #282c34;
+}
+
+#degrees {
+  font-size: 2rem;
+}
