@@ -43,3 +43,23 @@
   width: 70%;
   object-fit: cover;
 }
+
+#inputSearch {
+  width: 100%;
+  padding: 0.4rem;
+  border-radius: 3px;
+  border: 1px solid #282c34;
+}
+
+#favorite {
+  transition: transform 350ms ease-out;
+  font-size: 1rem;
+}
+
+#favorite:hover {
+  transform: scale(1.5);
+}
+
+#deleteJob {
+  font-size: 1.5rem;
+}
