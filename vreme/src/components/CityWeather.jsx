@@ -1,5 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
-import City from "./City";
+import { Container, Jumbotron, Badge, Toast } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -16,9 +15,8 @@ const CityWheater = ({ endpoint }) => {
 
   //   };
 
-  const baseEndpoint = `http://api.openweathermap.org/data/2.5/weather?q=${endpoint}&APPID=1ef43fab14b2f2266b636da651921500`;
-
   const handleQ = async () => {
+    const baseEndpoint = `http://api.openweathermap.org/data/2.5/weather?q=${endpoint}&APPID=1ef43fab14b2f2266b636da651921500`;
     try {
       // const response = await fetch(baseEndpoint + query + "&limit=20");
       const response = await fetch(baseEndpoint);
@@ -45,15 +43,25 @@ const CityWheater = ({ endpoint }) => {
 
   return (
     <div>
-      <Container>
-        <h1>City Weather</h1>
-        <Row>
-          <Col>
-            <h3>{city.name}</h3>
-            <p>sd</p>
-          </Col>
-        </Row>
-      </Container>
+      {city && (
+        <Jumbotron fluid id="jumbotron">
+          <Container>
+            <h1>
+              Welcome to <strong>{city.name}</strong>
+            </h1>
+            <Toast>
+              <Toast.Header>
+                <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
+                <strong className="mr-auto">Bootstrap</strong>
+                <small>just now</small>
+              </Toast.Header>
+              <Toast.Body>See? Just like this.</Toast.Body>
+            </Toast>
+            <Badge variant="warning">{city.id}</Badge>
+            <p>This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+          </Container>
+        </Jumbotron>
+      )}
     </div>
   );
 };

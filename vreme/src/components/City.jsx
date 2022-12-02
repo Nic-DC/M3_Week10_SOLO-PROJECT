@@ -16,7 +16,7 @@ const City = ({ data, handleEndpoint }) => {
     <Row className="mx-0 mt-3 p-3" style={{ border: "1px solid #00000033", borderRadius: 4 }}>
       <Col xs={3}>
         {/* <Link to={`/${data.name}`}>{data.name}</Link> */}
-        <Link to={`/city/` + data.wikiDataId} onClick={() => handleEndpoint(data.name)}>
+        <Link to={`/city/` + data.wikiDataId} onClick={() => handleEndpoint(data.name)} id="cityLink">
           {data.name}
         </Link>
       </Col>
@@ -25,17 +25,17 @@ const City = ({ data, handleEndpoint }) => {
 
         <div>
           {data.title} {/* <Link to={`/favorites`}> */}
-          <Badge
+          {/* <Badge
             variant="warning"
-            // onClick={() => {
-            //   dispatch({
-            //     type: `ADD_TO_FAVORITES`,
-            //     payload: data,
-            //   });
-            // }}
+            onClick={() => {
+              dispatch({
+                type: `ADD_TO_FAVORITES`,
+                payload: data,
+              });
+            }}
           >
             <AiTwotoneHeart id="favorite" />
-          </Badge>
+          </Badge> */}
           {/* </Link> */}
           {/* {deleteJob && (
             <RiDeleteBin2Fill
