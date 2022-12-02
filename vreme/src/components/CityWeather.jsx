@@ -51,8 +51,13 @@ const CityWheater = ({ endpoint }) => {
           </h1>
           <Toast id="toast">
             <Toast.Header>
-              <Badge variant="dark" className="mr-auto">
-                LON:{city.coord.lon} LAT:{city.coord.lat}
+              LON:
+              <Badge variant="dark" className="ml-2 mr-auto">
+                {city.coord.lon}
+              </Badge>
+              LAT:
+              <Badge variant="dark" className="ml-2 mr-auto">
+                {city.coord.lat}
               </Badge>
               <small>Wind speed: {city.wind.speed} km/h</small>
             </Toast.Header>
