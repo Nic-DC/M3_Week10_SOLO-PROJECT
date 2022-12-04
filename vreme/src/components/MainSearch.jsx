@@ -5,9 +5,10 @@ import NavbarVreme from "./NavbarVreme";
 import FavoriteComponent from "./FavoriteComponent";
 import CitiesComponent from "./CitiesComponent";
 import AccountComponent from "./AccountComponent";
+import CityDetails from "./CityDetails";
 //import { useSelector, useDispatch } from "react-redux";
 
-const MainSearch = ({ handleEndpoint, query }) => {
+const MainSearch = ({ handleEndpoint, query, changeCity, selectedCity }) => {
   // want to get current location of user
   let currentLat = 0;
   let currentLong = 0;
@@ -133,12 +134,8 @@ const MainSearch = ({ handleEndpoint, query }) => {
 
   return (
     <div>
-      {/* <NavbarVreme value={query} onChange={handleChange} /> */}
       <Container>
-        <Row>
-          {/* <Col xs={10} className="mx-auto my-3">
-            <h1>City wheater</h1>
-          </Col> */}
+        <Row className="center-row">
           <Col xs={10} md={6} className="mx-auto mt-5">
             <NavbarVreme />
             <div id="mainSearchFavorites">
@@ -157,20 +154,17 @@ const MainSearch = ({ handleEndpoint, query }) => {
                 placeholder="type and press Enter"
               />
             </Form>
-            <div>
-              {cities.map((cityData) => (
-                <City key={cityData.id} data={cityData} handleEndpoint={handleEndpoint} />
-              ))}
-            </div>
           </Col>
-
-          {/* <Col xs={10} md={6} className="mx-auto mb-5">
-            <div>
-              {cities.map((cityData) => (
-                <City key={cityData.id} data={cityData} handleEndpoint={handleEndpoint} />
-              ))}
-            </div>
-          </Col> */}
+        </Row>
+        <Row id="centerRow">
+          <Col xs={6} lg={2} className="mx-0 mt-2">
+            {cities.map((cityData) => (
+              <City key={cityData.id} data={cityData} changeCity={changeCity} />
+            ))}
+          </Col>
+          <Col xs={6} lg={4}>
+            <CityDetails selectedCity={selectedCity} />
+          </Col>
         </Row>
       </Container>
     </div>

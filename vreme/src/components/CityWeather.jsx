@@ -12,14 +12,9 @@ const CityWheater = ({ endpoint }) => {
 
   const [cities, setCities] = useState([]);
 
-  //   const options = {
-
-  //   };
-
   const handleQ = async () => {
     const baseEndpoint = `http://api.openweathermap.org/data/2.5/weather?q=${endpoint}&APPID=1ef43fab14b2f2266b636da651921500`;
     try {
-      // const response = await fetch(baseEndpoint + query + "&limit=20");
       const response = await fetch(baseEndpoint);
       if (response.ok) {
         const data = await response.json();
@@ -36,10 +31,6 @@ const CityWheater = ({ endpoint }) => {
 
   useEffect(() => {
     handleQ();
-
-    // let selectedCity = cities.filter((city) => city.wikiDataId === params.cityId);
-    // setCity(selectedCity);
-    // console.log({ selectedCity });
   }, []);
 
   return (

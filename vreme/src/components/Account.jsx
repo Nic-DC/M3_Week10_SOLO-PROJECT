@@ -1,17 +1,17 @@
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { RiHomeSmileFill } from "react-icons/ri";
 
 const Account = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <h1>Your Account</h1>
-      <Link to="/">
-        <Button>
-          Go Back Home
-          <RiHomeSmileFill id="brokenHeart" className="ml-2" />
-        </Button>
-      </Link>
+      <Button onClick={() => navigate("/")}>
+        Go Back Home
+        <RiHomeSmileFill id="brokenHeart" className="ml-2" />
+      </Button>
     </div>
   );
 };

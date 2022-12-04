@@ -116,7 +116,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
 }
 
 #mainSearchRow {
@@ -127,5 +126,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 0;
+}
+
+#cityComponent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#centerRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-header,
+.details-weather {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.details-weather {
+  font-size: 1rem;
 }

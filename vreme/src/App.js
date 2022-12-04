@@ -13,19 +13,39 @@ import Account from "./components/Account";
 
 function App() {
   const [endpoint, setEndpoint] = useState("");
+  const [selectedCity, setSelectedCity] = useState(null);
 
   console.log({ endpoint });
+  console.log({ selectedCity });
 
   const handleEndpoint = (value) => {
     setEndpoint(value);
   };
 
+  const changeCity = (city) => setSelectedCity(city);
+
+  // const handleCity = (city) => {
+  //   setSelectedCity(city);
+  //   setEndpoint(city.name);
+  // };
+
   return (
     <BrowserRouter>
       <div className="App App-header">
         <Routes>
-          <Route path="/" element={<MainSearch query={endpoint} handleEndpoint={handleEndpoint} />} />
-          <Route path="/city/:cityId" element={<CityWeather endpoint={endpoint} />} />
+          <Route
+            path="/"
+            element={
+              <MainSearch
+                query={endpoint}
+                handleEndpoint={handleEndpoint}
+                changeCity={changeCity}
+                // handleCity={handleCity}
+                selectedCity={selectedCity}
+              />
+            }
+          />
+          {/* <Route path="/city/:cityId" element={<CityWeather endpoint={endpoint} />} /> */}
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/cities" element={<Cities />} />
           <Route path="/account" element={<Account />} />
