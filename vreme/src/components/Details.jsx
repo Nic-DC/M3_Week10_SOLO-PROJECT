@@ -1,5 +1,5 @@
-import { Col, Row, Button, Toast, Badge, Jumbotron } from "react-bootstrap";
-import { WiDegrees } from "react-icons/wi";
+import { Col, Row, Button, Toast, Badge, Jumbotron, Image } from "react-bootstrap";
+import { RiCelsiusFill } from "react-icons/ri";
 import { GiBrokenHeartZone } from "react-icons/gi";
 import { useState, useEffect } from "react";
 
@@ -69,11 +69,16 @@ const Details = ({ selectedCity }) => {
                   </Badge>
                 </div>
                 <div className="details-weather mb-2">
-                  <Badge variant="info" className="ml-1 ">
-                    {city.weather.description}
+                  <span className="font-weight-bold">Humidity:</span>&nbsp;
+                  <Badge variant="light" className="ml-1 ">
+                    {city.main.humidity}%
                   </Badge>
-                  <Badge variant="info" className="ml-1 ">
-                    {city.main.temp}
+                </div>
+                <div className="details-weather mb-2">
+                  <span className="font-weight-bold">Temp:</span>&nbsp;
+                  <Badge variant="info" className="ml-1 badgeStyling">
+                    {Math.floor(city.main.temp - 273.15)}
+                    <RiCelsiusFill className=" mb-1" />
                   </Badge>
                 </div>
               </Col>

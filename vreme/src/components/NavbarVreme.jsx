@@ -8,7 +8,7 @@ const NavbarVreme = () => {
     <div id="logoAndTitle">
       <Image src={logo} rounded id="logoImg" className="mr-auto" />
       <strong className="" id="title">
-        NoughtyWeather.earth
+        CheekyWeather.earth
       </strong>
     </div>
   );
