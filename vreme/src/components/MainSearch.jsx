@@ -1,16 +1,105 @@
 import { useState } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Toast } from "react-bootstrap";
 import City from "./City";
-// import NavbarVreme from "./NavbarVreme";
-
+import NavbarVreme from "./NavbarVreme";
+import FavoriteComponent from "./FavoriteComponent";
+import CitiesComponent from "./CitiesComponent";
+import AccountComponent from "./AccountComponent";
 //import { useSelector, useDispatch } from "react-redux";
 
 const MainSearch = ({ handleEndpoint, query }) => {
-  // const jobsList = useSelector((state) => state.favorites.favList);
-  // console.log({ jobsList });
+  // want to get current location of user
+  let currentLat = 0;
+  let currentLong = 0;
+  let coordinatesArray = [];
 
-  // const dispatch = useDispatch();
-  // console.log({ dispatch });
+  console.log("coordinatesArray", coordinatesArray);
+
+  const showCurrentCoordinates = () => {
+    const currentLocOptions = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    function success(pos) {
+      const crd = pos.coords;
+      console.log(typeof crd.latitude);
+      console.log("Your current position is:");
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+      currentLat = crd.latitude;
+      currentLong = crd.longitude;
+      coordinatesArray.push(currentLat, currentLong);
+      console.log({ coordinatesArray });
+      return coordinatesArray;
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    return navigator.geolocation.getCurrentPosition(success, error, currentLocOptions);
+  };
+
+  window.onload = () => {
+    showCurrentCoordinates();
+  };
+
+  /* ----------------------------------------------------------------------------------------
+  CHALLENGE: Get name of city the user is in 
+  PROBLEM: "[Violation] Only request geolocation information in response to a user gesture."
+  ----------------------------------------------------------------------------------------- */
+  // function getCoordintes() {
+  //   var options = {
+  //     enableHighAccuracy: true,
+  //     timeout: 5000,
+  //     maximumAge: 0,
+  //   };
+
+  //   function success(pos) {
+  //     let crd = pos.coords;
+  //     let lat = crd.latitude.toString();
+  //     let lng = crd.longitude.toString();
+  //     let coordinates = [lat, lng];
+  //     console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+  //     getCity(coordinates);
+  //     return;
+  //   }
+
+  //   function error(err) {
+  //     console.warn(`ERROR(${err.code}): ${err.message}`);
+  //   }
+
+  //   navigator.geolocation.getCurrentPosition(success, error, options);
+  // }
+
+  // function getCity(coordinates) {
+  //   let xhr = new XMLHttpRequest();
+  //   let lat = coordinates[0];
+  //   let lng = coordinates[1];
+
+  //   // Paste your LocationIQ token below.
+  //   xhr.open(
+  //     "GET",
+  //     `https://us1.locationiq.com/v1/reverse.php?key=pk.19de85d885d50b18180cab82855cc361&lat=${lat}&lon=${lng}&format=json`,
+  //     true
+  //   );
+  //   xhr.send();
+  //   xhr.onreadystatechange = processRequest;
+  //   xhr.addEventListener("readystatechange", processRequest, false);
+
+  //   function processRequest(e) {
+  //     if (xhr.readyState == 4 && xhr.status == 200) {
+  //       var response = JSON.parse(xhr.responseText);
+  //       var city = response.address.village;
+  //       console.log(city);
+  //       return;
+  //     }
+  //   }
+  // }
+  // getCoordintes();
 
   const [cities, setCities] = useState([]);
 
@@ -47,11 +136,18 @@ const MainSearch = ({ handleEndpoint, query }) => {
       {/* <NavbarVreme value={query} onChange={handleChange} /> */}
       <Container>
         <Row>
-          <Col xs={10} className="mx-auto my-3">
+          {/* <Col xs={10} className="mx-auto my-3">
             <h1>City wheater</h1>
-          </Col>
-          <Col xs={10} className="mx-auto">
-            <Form onSubmit={handleSubmit}>
+          </Col> */}
+          <Col xs={10} md={6} className="mx-auto mt-5">
+            <NavbarVreme />
+            <div id="mainSearchFavorites">
+              <FavoriteComponent />
+              <CitiesComponent />
+              <AccountComponent />
+            </div>
+
+            <Form onSubmit={handleSubmit} id="form">
               <Form.Control
                 type="search"
                 value={query}
@@ -61,12 +157,20 @@ const MainSearch = ({ handleEndpoint, query }) => {
                 placeholder="type and press Enter"
               />
             </Form>
+            <div>
+              {cities.map((cityData) => (
+                <City key={cityData.id} data={cityData} handleEndpoint={handleEndpoint} />
+              ))}
+            </div>
           </Col>
-          <Col xs={10} className="mx-auto mb-5">
-            {cities.map((cityData) => (
-              <City key={cityData.id} data={cityData} handleEndpoint={handleEndpoint} />
-            ))}
-          </Col>
+
+          {/* <Col xs={10} md={6} className="mx-auto mb-5">
+            <div>
+              {cities.map((cityData) => (
+                <City key={cityData.id} data={cityData} handleEndpoint={handleEndpoint} />
+              ))}
+            </div>
+          </Col> */}
         </Row>
       </Container>
     </div>
@@ -74,24 +178,3 @@ const MainSearch = ({ handleEndpoint, query }) => {
 };
 
 export default MainSearch;
-
-// return (
-//   <Container>
-//     <Row>
-//       <Col xs={10} className="mx-auto my-3">
-//         <h1>City wheater</h1>
-//       </Col>
-//       <Col xs={10} className="mx-auto">
-//         <Form onSubmit={handleSubmit}>
-//           <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
-//         </Form>
-//       </Col>
-//       <Col xs={10} className="mx-auto mb-5">
-//         {cities.map((jobData) => (
-//           <Job key={jobData._id} data={jobData} />
-//         ))}
-//       </Col>
-//     </Row>
-//   </Container>
-// );
-// };

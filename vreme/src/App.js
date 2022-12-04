@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainSearch from "./components/MainSearch";
 import CityWeather from "./components/CityWeather";
 import { useState } from "react";
+import Favorite from "./components/Favorite";
+import Cities from "./components/Cities";
+import NotFound from "./components/NotFound";
+import Account from "./components/Account";
 
 function App() {
   const [endpoint, setEndpoint] = useState("");
@@ -19,10 +23,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App App-header">
-        {/* <NavbarVreme /> */}
         <Routes>
           <Route path="/" element={<MainSearch query={endpoint} handleEndpoint={handleEndpoint} />} />
           <Route path="/city/:cityId" element={<CityWeather endpoint={endpoint} />} />
+          <Route path="/favorite" element={<Favorite />} />
+          <Route path="/cities" element={<Cities />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>

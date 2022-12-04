@@ -1,4 +1,4 @@
-import { Row, Col, Badge } from "react-bootstrap";
+import { Row, Col, Badge, Toast } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { AiTwotoneHeart } from "react-icons/ai";
@@ -13,14 +13,17 @@ const City = ({ data, handleEndpoint }) => {
   // console.log({ dispatch });
 
   return (
-    <Row className="mx-0 mt-3 p-3" style={{ border: "1px solid #00000033", borderRadius: 4 }}>
-      <Col xs={3}>
+    <Row className="" style={{ border: "1px solid #00000033", borderRadius: 4 }}>
+      <Col>
+        <div>
+          <Link to={`/city/` + data.wikiDataId} onClick={() => handleEndpoint(data.name)} id="cityLink">
+            {data.name}
+          </Link>
+        </div>
+
         {/* <Link to={`/${data.name}`}>{data.name}</Link> */}
-        <Link to={`/city/` + data.wikiDataId} onClick={() => handleEndpoint(data.name)} id="cityLink">
-          {data.name}
-        </Link>
       </Col>
-      <Col xs={9}>
+      <Col xs={10} md={6}>
         {/* <a href={data.url} target="_blank" rel="noreferrer"> */}
 
         <div>
