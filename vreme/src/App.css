@@ -42,7 +42,7 @@
 
 /* NAVBAR */
 #logoImg {
-  width: 30%;
+  width: 20%;
   object-fit: cover;
 }
 
@@ -117,7 +117,18 @@
   justify-content: space-between;
   align-items: center;
 }
+#logoAndTitle {
+  background-image: url("./assets/sun-gif-1.gif");
+  padding: 0.5rem 0.5rem 0 0;
+  background-size: cover;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
 
+#title {
+  color: white;
+  font-size: 1.5rem;
+}
 #mainSearchRow {
   background-image: linear-gradient(black, white);
 }
@@ -126,7 +137,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1rem 0.5rem;
+  background-color: #282c34;
 }
 
 #cityComponent {
@@ -151,4 +163,31 @@
 
 .details-weather {
   font-size: 1rem;
+}
+
+#btnAction {
+  background: #282c34;
+  color: white;
+}
+
+#cities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #282c34;
+  padding: 0.5rem;
+  border-bottom-left-radius: 3px;
+}
+
+#navAndIcons {
+  padding: 0.5rem 0 0 0;
+}
+
+#description {
+  background-color: rgba(40, 44, 52, 0.4);
+  padding: 0 0.5rem 0 0;
+  align-self: flex-start;
 }

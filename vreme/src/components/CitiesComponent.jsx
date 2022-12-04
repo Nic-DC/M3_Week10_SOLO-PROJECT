@@ -5,7 +5,7 @@ import { SiFiles } from "react-icons/si";
 const CitiesComponent = () => {
   return (
     <Link to="/cities">
-      <Button className="ml-4">
+      <Button className=" text-light" variant="outline-dark">
         Your Cities
         <SiFiles id="brokenHeart" className="ml-2" />
       </Button>

@@ -16,7 +16,7 @@ const City = ({ data, changeCity }) => {
     // <Row className="" style={{ border: "1px solid #00000033", borderRadius: 4 }}>
     //   <Col>
 
-    <div onClick={() => changeCity(data)}>
+    <div onClick={() => changeCity(data)} className="mb-3">
       {/* <Link to={`/city/` + data.wikiDataId} onClick={() => handleEndpoint(data.name)} id="cityLink"> */}
 
       {data.name}

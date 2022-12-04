@@ -5,7 +5,7 @@ import { MdAccountBox } from "react-icons/md";
 const AccountComponent = () => {
   return (
     <Link to="/account">
-      <Button className="ml-4">
+      <Button className="text-light" variant="outline-dark">
         Your Account
         <MdAccountBox id="brokenHeart" className="ml-2" />
       </Button>

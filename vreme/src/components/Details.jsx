@@ -39,7 +39,7 @@ const Details = ({ selectedCity }) => {
                 <span>
                   <small>Welcome to</small> <strong>{city.name}</strong>
                 </span>
-                <Button color="primary" onClick={() => {}} className="ml-2">
+                <Button color="dark" onClick={() => {}} className="text-light ml-2" variant="outline-dark">
                   <GiBrokenHeartZone id="brokenHeart" />
                 </Button>
               </Col>

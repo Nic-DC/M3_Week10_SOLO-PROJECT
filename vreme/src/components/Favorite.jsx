@@ -8,7 +8,7 @@ const Favorite = () => {
     <div>
       <h1>Your Favorites</h1>
 
-      <Button onClick={() => navigate("/")}>
+      <Button onClick={() => navigate("/")} variant="outline-dark">
         Go Back Home
         <RiHomeSmileFill id="brokenHeart" className="ml-2" />
       </Button>

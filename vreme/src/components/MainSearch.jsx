@@ -136,7 +136,7 @@ const MainSearch = ({ handleEndpoint, query, changeCity, selectedCity }) => {
     <div>
       <Container>
         <Row className="center-row">
-          <Col xs={10} md={6} className="mx-auto mt-5">
+          <Col xs={10} md={6} className="mx-auto" id="navAndIcons">
             <NavbarVreme />
             <div id="mainSearchFavorites">
               <FavoriteComponent />
@@ -157,12 +157,12 @@ const MainSearch = ({ handleEndpoint, query, changeCity, selectedCity }) => {
           </Col>
         </Row>
         <Row id="centerRow">
-          <Col xs={6} lg={2} className="mx-0 mt-2">
+          <Col xs={6} lg={2} className="mx-0 " id="cities">
             {cities.map((cityData) => (
               <City key={cityData.id} data={cityData} changeCity={changeCity} />
             ))}
           </Col>
-          <Col xs={6} lg={4}>
+          <Col xs={6} lg={4} id="description">
             <CityDetails selectedCity={selectedCity} />
           </Col>
         </Row>

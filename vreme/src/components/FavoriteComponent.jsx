@@ -5,7 +5,7 @@ import { GiBrokenHeartZone } from "react-icons/gi";
 const FavoriteComponent = () => {
   return (
     <Link to="/favorite">
-      <Button>
+      <Button variant="outline-dark" className="text-light">
         Your Favorites
         <GiBrokenHeartZone id="brokenHeart" className="ml-2" />
       </Button>
