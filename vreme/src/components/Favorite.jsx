@@ -1,11 +1,13 @@
 import { Button, Toast, Badge, Jumbotron } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { RiHomeSmileFill } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { AiTwotoneDelete } from "react-icons/ai";
 
 const Favorite = () => {
   const navigate = useNavigate();
   const cityList = useSelector((state) => state.favorites.favoriteCities);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -22,6 +24,17 @@ const Favorite = () => {
                   {city.name}
                 </Badge>{" "}
               </small>
+              <Button
+                variant="danger"
+                onClick={() => {
+                  dispatch({
+                    type: `REMOVE_FAVORITE`,
+                    payload: i,
+                  });
+                }}
+              >
+                <AiTwotoneDelete />
+              </Button>
             </Toast.Header>
           </Toast>
         ))}

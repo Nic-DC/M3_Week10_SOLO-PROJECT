@@ -14,6 +14,15 @@ const mainReducer = (state = initialState, action) => {
           favoriteCities: [...state.favorites.favoriteCities, action.payload],
         },
       };
+    case `REMOVE_FAVORITE`:
+      return {
+        ...state,
+        favorites: {
+          ...state.favorites,
+          favoriteCities: [...state.favorites.favoriteCities.filter((city, i) => i !== action.payload), action.payload],
+        },
+      };
+
     default:
       return state;
   }
