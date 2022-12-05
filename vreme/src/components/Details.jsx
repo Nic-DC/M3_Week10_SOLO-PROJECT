@@ -2,11 +2,14 @@ import { Col, Row, Button, Toast, Badge, Jumbotron, Image } from "react-bootstra
 import { RiCelsiusFill } from "react-icons/ri";
 import { GiBrokenHeartZone } from "react-icons/gi";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const Details = ({ selectedCity }) => {
   const [city, setCity] = useState(null);
   console.log("selectedCity name", selectedCity.name);
   const endpoint = selectedCity.name;
+
+  const dispatch = useDispatch();
 
   const handleQ = async () => {
     const baseEndpoint = `http://api.openweathermap.org/data/2.5/weather?q=${endpoint}&APPID=1ef43fab14b2f2266b636da651921500`;
@@ -39,7 +42,14 @@ const Details = ({ selectedCity }) => {
                 <span>
                   <small>Welcome to</small> <strong>{city.name}</strong>
                 </span>
-                <Button color="dark" onClick={() => {}} className="text-light ml-2" variant="outline-dark">
+                <Button
+                  color="dark"
+                  onClick={() => {
+                    dispatch({ type: `ADD_TO_FAVORITE`, payload: selectedCity });
+                  }}
+                  className="text-light ml-2"
+                  variant="outline-dark"
+                >
                   <GiBrokenHeartZone id="brokenHeart" />
                 </Button>
               </Col>
@@ -52,6 +62,16 @@ const Details = ({ selectedCity }) => {
                 </div>
               </Col>
               <Col sm={8}>
+                <div className="details-weather mb-2">
+                  <Badge variant="info" className="mr-2 badgeStyling">
+                    {city.weather[0].description}
+                  </Badge>
+                  <span className="font-weight-bold">Temp:</span>&nbsp;
+                  <Badge variant="info" className="ml-1 badgeStyling">
+                    {Math.floor(city.main.temp - 273.15)}
+                    <RiCelsiusFill className=" mb-1" />
+                  </Badge>
+                </div>
                 <div className="details-weather mb-2">
                   <span className="font-weight-bold">Lon:</span>&nbsp;
                   <Badge variant="dark" className="ml-1 ">
@@ -72,13 +92,6 @@ const Details = ({ selectedCity }) => {
                   <span className="font-weight-bold">Humidity:</span>&nbsp;
                   <Badge variant="light" className="ml-1 ">
                     {city.main.humidity}%
-                  </Badge>
-                </div>
-                <div className="details-weather mb-2">
-                  <span className="font-weight-bold">Temp:</span>&nbsp;
-                  <Badge variant="info" className="ml-1 badgeStyling">
-                    {Math.floor(city.main.temp - 273.15)}
-                    <RiCelsiusFill className=" mb-1" />
                   </Badge>
                 </div>
               </Col>

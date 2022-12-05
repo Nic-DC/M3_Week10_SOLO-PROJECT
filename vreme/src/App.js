@@ -46,7 +46,7 @@ function App() {
             }
           />
           {/* <Route path="/city/:cityId" element={<CityWeather endpoint={endpoint} />} /> */}
-          <Route path="/favorite" element={<Favorite />} />
+          <Route path="/favorite" element={<Favorite selectedCity={selectedCity} />} />
           <Route path="/cities" element={<Cities />} />
           <Route path="/account" element={<Account />} />
           <Route path="*" element={<NotFound />} />

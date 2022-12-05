@@ -156,6 +156,7 @@ const MainSearch = ({ handleEndpoint, query, changeCity, selectedCity }) => {
             </Form>
           </Col>
         </Row>
+
         <Row id="centerRow">
           <Col xs={6} lg={2} className="mx-0 " id="cities">
             {cities.map((cityData) => (
