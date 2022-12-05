@@ -18,12 +18,12 @@ const Favorite = () => {
         {cityList.map((city, i) => (
           <Toast id="toast" key={i}>
             <Toast.Header closeButton={false}>
-              <small>
+              <h3>
                 Welcome to
                 <Badge variant="dark" className=" ml-2">
                   {city.name}
                 </Badge>{" "}
-              </small>
+              </h3>
               <Button
                 variant="danger"
                 onClick={() => {
