@@ -32,6 +32,7 @@ const Favorite = () => {
                     payload: i,
                   });
                 }}
+                className="ml-2"
               >
                 <AiTwotoneDelete />
               </Button>

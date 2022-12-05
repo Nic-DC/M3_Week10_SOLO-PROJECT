@@ -19,7 +19,7 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         favorites: {
           ...state.favorites,
-          favoriteCities: [...state.favorites.favoriteCities.filter((city, i) => i !== action.payload), action.payload],
+          favoriteCities: [...state.favorites.favoriteCities.filter((city, i) => i !== action.payload)],
         },
       };
 
